@@ -1,2 +1,3 @@
-<h1>Home Page</h1>
-<h4>1 + 1 = {{ 1+1 }}</h4>
+<section ng-controller="RoomCtrl as room">
+  <h4 ng-repeat="rm in room.rooms">{{ rm.$value }}</h4>
+</section>
