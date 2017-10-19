@@ -1,3 +1,9 @@
-<section ng-controller="RoomCtrl as room">
-  <h4 ng-repeat="rm in room.rooms">{{ rm.$value }}</h4>
-</section>
+<div id="leftBar">
+  <header ng-controller="ModalCtrl as modal">
+    <h1>BlocChat <button class="btn btn-primary" ng-click="modal.open('sm')">New Room</button></h1>
+  </header>
+
+  <section ng-controller="RoomCtrl as room">
+    <h4 ng-repeat="rm in room.rooms | orderBy:'$value'">{{ rm.$value }}</h4>
+  </section>
+</div>

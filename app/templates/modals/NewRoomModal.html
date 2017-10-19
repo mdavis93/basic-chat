@@ -1,0 +1,13 @@
+<div ng-controller="ModalCtrl as modal">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">New Room</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <h4>Enter a Name for the New Room</h4>
+    <input type="text" placeholder="Room Name">
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="modal.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="modal.cancel()">Cancel</button>
+  </div>
+</div>

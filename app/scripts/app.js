@@ -15,6 +15,6 @@
   }
 
   angular
-      .module('basicChat', ['ui.router', 'firebase'])
+      .module('basicChat', ['ui.router', 'firebase', 'ui.bootstrap'])
       .config(config);
 })();
