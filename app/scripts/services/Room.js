@@ -6,9 +6,9 @@
 
     Room.all = rooms;
 
-    Room.add = () => {
+    Room.add = (name) => {
       var roomCount = rooms.length;
-      rooms.$add({'$value': "room" + (roomCount + 1)}).then(function(ref) { console.log(ref.key); });
+      rooms.$add({'$value': name}).then(function() { console.log(name); });
 //{"$value":"room1","$id":"room1"
       console.log(rooms);
     }

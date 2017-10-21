@@ -1,10 +1,15 @@
-<div ng-controller="ModalCtrl as modal">
+<div>
   <div class="modal-header">
-    <h3 class="modal-title" id="modal-title">New Room</h3>
+    <h2 class="modal-title" id="modal-title">New Room</h2>
   </div>
   <div class="modal-body" id="modal-body">
     <h4>Enter a Name for the New Room</h4>
-    <input type="text" placeholder="Room Name">
+    <form ng-submit="modal.ok()">
+      <div class="input-group animated fadeIn">
+        <input type="text" class="form-control finderBar" ng-model="modal.name" title="name" placeholder="Room Name" autofocus>
+        <h4>{{ modal.name }}</h4>
+      </div>
+    </form>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="modal.ok()">OK</button>
