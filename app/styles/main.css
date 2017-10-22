@@ -1,0 +1,33 @@
+.pane {
+  height: 100vh;
+  width: 30%;
+  background-color: #bcbcbc;
+}
+
+.navbar {
+  padding-left: 2rem;
+}
+
+.room {
+  padding: 1rem 0;
+  margin: 0;
+}
+
+.room:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.deleting:hover {
+  background-color: rgba(187, 38, 38, 0.5);
+  box-shadow: 0 0 3px 2px rgba(187, 38, 38, 0.5);
+  color: white;
+}
+
+.close:hover {
+  text-shadow: rgb(255,0,0) 1px 0 10px;
+}
+
+#roomAddDel {
+  padding-bottom: 2rem;
+}

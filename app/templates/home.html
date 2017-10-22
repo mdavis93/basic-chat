@@ -1,9 +1,13 @@
-<div id="leftBar">
-  <header ng-controller="ModalCtrl as modals">
-    <h1>BlocChat <button class="btn btn-primary" ng-click="modals.open('sm')">New Room</button></h1>
-  </header>
+<section class="pane">
+  <div class="navbar">
+    <h1>Basic Chat</h1>
+    <div ng-controller="ModalCtrl as modals" id="roomAddDel">
+      <a type="button" class="btn btn-primary" ng-click="modals.open('sm')">New Room</a>
+      <a type="button" class="btn btn-danger" ng-model="home.canDelete" uib-btn-checkbox>Delete Room</a>
+    </div>
 
-  <section ng-controller="RoomCtrl as room">
-    <h4 ng-repeat="rm in room.rooms | orderBy:'$value'">{{ rm.$value }}</h4>
-  </section>
-</div>
+    <span ng-repeat="room in home.rooms | orderBy:'$value'">
+      <h4 class="room" ng-class="home.canDelete ? 'deleting' : ''">{{ room.$value }} <button type="button" class="close" ng-show="home.canDelete" ng-click="home.delRoom(room)" aria-label="Close">Click To Delete</button></h4>
+    </span>
+  </div>
+</section>

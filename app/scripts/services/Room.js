@@ -13,6 +13,10 @@
       console.log(rooms);
     }
 
+    Room.delete = (name) => {
+      rooms.$remove(name).then( function(error) { console.log(error); });
+    }
+
     return Room;
   }
 
