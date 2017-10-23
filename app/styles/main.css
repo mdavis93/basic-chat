@@ -1,3 +1,7 @@
+body {
+  padding: 0;
+  margin: 0;
+}
 .rooms {
   height: 100vh;
   width: 30%;
@@ -16,12 +20,13 @@
 }
 
 .navbar {
-  padding-left: 2rem;
+  margin-left: 2rem;
 }
 
 .room {
   padding: 1rem 0;
-  margin: 0;
+  padding-left: 2rem;
+  margin: 0 0 0 -2rem;
 }
 
 .close {
@@ -34,6 +39,26 @@
 
 .center {
   margin: 0 auto;
+}
+
+.activeRoom {
+  padding: 1rem 0;
+  padding-left: 2rem;
+  margin: 0 0 0 -2rem;
+  background-color: rgba(55, 185, 45, .5);
+  cursor: default;
+}
+
+.btn.disabled, .btn[disabled] {
+  border-color: grey;
+  background-color: gray;
+  opacity: .45;
+}
+
+.activeRoom:hover .close {
+  opacity: 0.7;
+  text-shadow: rgb(255,0,0) 1px 0 10px;
+  font-size: 21px;
 }
 
 .modal-body form h4 p {

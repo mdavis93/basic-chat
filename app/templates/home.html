@@ -7,7 +7,7 @@
     </div>
     <span ng-show="home.Deleting" id="deleteWhich">Delete which room...</span>
     <span ng-repeat="room in home.rooms">
-      <h4 class="room" ng-class="home.Deleting ? 'deleting' : ''" ng-click="home.processClick(room)">
+      <h4 ng-class="{deleting : home.Deleting, activeRoom : activeRoom == room, room : activeRoom != room}" ng-click="home.processClick(room)">
         {{ room.$value }}
         <span class="close" ng-show="home.Deleting" aria-label="Click to Delete">Click To Delete</span>
       </h4>
