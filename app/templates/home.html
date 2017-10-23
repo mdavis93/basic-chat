@@ -3,7 +3,9 @@
     <h1>Basic Chat</h1>
     <div ng-controller="ModalCtrl as modals" id="roomAddDel">
       <a type="button" class="btn btn-primary" ng-disabled="home.Deleting" ng-click="home.Deleting || modals.open('sm')">New Room</a>
+    <!--  TODO - Complete Delete function to also delete messages associated with the deleted room.
       <a type="button" class="btn btn-danger" ng-model="home.Deleting" uib-btn-checkbox id="btnDelete">Delete Room</a>
+    -->
     </div>
     <span ng-show="home.Deleting" id="deleteWhich">Delete which room...</span>
     <span ng-repeat="room in home.rooms">
@@ -17,5 +19,17 @@
 <section class="messages">
   <div class="container">
     <h2>Chatting In {{ activeRoom.$value }}</h2>
+    <hr>
+    <table class="table">
+      <tr ng-repeat="message in messages track by $index" class="row" ng-class="{oddRow: $odd}">
+        <td class="message">
+          <span class="username">{{ message.username }}</span>  <span class="label label-danger" ng-show="message.username == 'SuperUser'">Admin</span>
+          <p>{{ message.content }}</p>
+        </td>
+        <td class="timeStamp">
+          {{ home.toLocalTime(message.sentAt) }}
+        </td>
+      </tr>
+    </table>
   </div>
 </section>

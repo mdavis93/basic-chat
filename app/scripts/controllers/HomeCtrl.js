@@ -1,6 +1,10 @@
 (function() {
-  function HomeCtrl(Room, $scope) {
+  function HomeCtrl(Room, Message, $filter, $scope) {
 
+    /**
+    * @desc Boolean value denoting whether the user is deleting a room
+    * @type {Boolean}
+    **/
     this.Deleting = false;
     rooms = Room.all;
 
@@ -8,8 +12,17 @@
       room = rooms[0];
 
       $scope.activeRoom = room;
+      $scope.messages = Message.getByRoomId($scope.activeRoom.$id);
     });
 
+    this.toLocalTime = (date) => {
+      return( $filter('date')(date, 'shortTime') );
+    }
+
+    /**
+    * @desc Array of all rooms currently available
+    * @type {Array}
+    **/
     this.rooms = rooms;
 
     /**
@@ -30,8 +43,14 @@
       this.Deleting = !this.Deleting;
     };
 
+    /**
+    * @func changeRoom
+    * @param {Object} room
+    * @desc Changes the currently active room, setting it to 'room'.
+    **/
     this.changeRoom = (room) => {
       $scope.activeRoom = room;
+      $scope.messages = Message.getByRoomId($scope.activeRoom.$id);
     }
 
     /**
@@ -55,5 +74,5 @@
 
   angular
       .module('basicChat')
-      .controller('HomeCtrl', ['Room', '$scope', HomeCtrl]);
+      .controller('HomeCtrl', ['Room', 'Message', '$filter', '$scope', HomeCtrl]);
 })();

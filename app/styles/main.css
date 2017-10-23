@@ -2,6 +2,11 @@ body {
   padding: 0;
   margin: 0;
 }
+
+uib-btn-checkbox:checked {
+  border: 3px solid yellow;
+}
+
 .rooms {
   height: 100vh;
   width: 30%;
@@ -9,6 +14,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  border-right: 2px solid black;
 }
 .messages {
   height: 100vh;
@@ -19,14 +25,34 @@ body {
   right: 0;
 }
 
-.navbar {
-  margin-left: 2rem;
+.container {
+  width: 100%;
 }
 
-.room {
-  padding: 1rem 0;
-  padding-left: 2rem;
-  margin: 0 0 0 -2rem;
+.row {
+    height: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.username {
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.message {
+    width: 80%;
+}
+
+.message p {
+  margin: 1em 0 0 0;
+}
+
+.timeStamp {
+    width: 20%;
+}
+
+.navbar {
+  margin-left: 2rem;
 }
 
 .close {
@@ -37,8 +63,28 @@ body {
   text-align: center;
 }
 
+.modal-footer {
+  text-align: center;
+}
+
 .center {
   margin: 0 auto;
+}
+
+.btn.disabled, .btn[disabled] {
+  border-color: grey;
+  background-color: gray;
+  opacity: .45;
+}
+
+.modal-body form h4 p {
+  padding-top: 2em;
+}
+
+.btn.disabled:hover, .btn[disabled]:hover {
+  border-color: grey;
+  background-color: gray;
+  opacity: .45;
 }
 
 .activeRoom {
@@ -49,20 +95,16 @@ body {
   cursor: default;
 }
 
-.btn.disabled, .btn[disabled] {
-  border-color: grey;
-  background-color: gray;
-  opacity: .45;
-}
-
 .activeRoom:hover .close {
   opacity: 0.7;
   text-shadow: rgb(255,0,0) 1px 0 10px;
   font-size: 21px;
 }
 
-.modal-body form h4 p {
-  padding-top: 2em;
+.room {
+  padding: 1rem 0;
+  padding-left: 2rem;
+  margin: 0 0 0 -2rem;
 }
 
 .room:hover {
@@ -74,6 +116,10 @@ body {
   opacity: 0.7;
   text-shadow: rgb(255,0,0) 1px 0 10px;
   font-size: 21px;
+}
+
+.deleting {
+  border: 2px dashed rgba(187, 38, 38, 0.5);
 }
 
 .deleting:hover {
@@ -91,8 +137,4 @@ body {
   color: red;
   text-align: center;
   padding-bottom: 1em;
-}
-
-uib-btn-checkbox:checked {
-  border: 3px solid yellow;
 }
