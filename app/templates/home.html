@@ -1,13 +1,21 @@
-<section class="pane">
+<section class="rooms">
   <div class="navbar">
     <h1>Basic Chat</h1>
     <div ng-controller="ModalCtrl as modals" id="roomAddDel">
-      <a type="button" class="btn btn-primary" ng-click="modals.open('sm')">New Room</a>
-      <a type="button" class="btn btn-danger" ng-model="home.canDelete" uib-btn-checkbox>Delete Room</a>
+      <a type="button" class="btn btn-primary" ng-disabled="home.Deleting" ng-click="home.Deleting || modals.open('sm')">New Room</a>
+      <a type="button" class="btn btn-danger" ng-model="home.Deleting" uib-btn-checkbox id="btnDelete">Delete Room</a>
     </div>
-
-    <span ng-repeat="room in home.rooms | orderBy:'$value'">
-      <h4 class="room" ng-class="home.canDelete ? 'deleting' : ''">{{ room.$value }} <button type="button" class="close" ng-show="home.canDelete" ng-click="home.delRoom(room)" aria-label="Close">Click To Delete</button></h4>
+    <span ng-show="home.Deleting" id="deleteWhich">Delete which room...</span>
+    <span ng-repeat="room in home.rooms">
+      <h4 class="room" ng-class="home.Deleting ? 'deleting' : ''" ng-click="home.processClick(room)">
+        {{ room.$value }}
+        <span class="close" ng-show="home.Deleting" aria-label="Click to Delete">Click To Delete</span>
+      </h4>
     </span>
+  </div>
+</section>
+<section class="messages">
+  <div class="container">
+    <h2>Chatting In {{ activeRoom.$value }}</h2>
   </div>
 </section>

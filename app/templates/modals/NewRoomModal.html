@@ -1,13 +1,12 @@
 <div>
   <div class="modal-header">
-    <h2 class="modal-title" id="modal-title">New Room</h2>
+    <h2 class="modal-title">Create a new room</h2>
   </div>
-  <div class="modal-body" id="modal-body">
-    <h4>Enter a Name for the New Room</h4>
+  <div class="modal-body">
+    <h4>Enter a room name: </h4>
     <form ng-submit="modal.ok()">
-      <div class="input-group animated fadeIn">
+      <div class="input-group animated fadeIn center">
         <input type="text" class="form-control finderBar" ng-model="modal.name" title="name" placeholder="Room Name" autofocus>
-        <h4>{{ modal.name }}</h4>
       </div>
     </form>
   </div>

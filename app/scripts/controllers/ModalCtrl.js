@@ -1,31 +1,30 @@
 (function() {
-  function ModalCtrl($uibModal, $document, Room) {
+  function ModalCtrl($uibModal, Room) {
 
     var room = Room;
     this.animationsEnabled = true;
 
     this.open = (size, parentSelector) => {
-      var parentElem = parentSelector ?
-              angular.element($document[0].querySelector('.newRoomModal ' + parentSelector)) : undefined;
-
       var modalInstance = $uibModal.open({
         animation: this.animationsEnabled,
         templateUrl: '/../../templates/modals/NewRoomModal.html',
         controller: 'ModalInstanceCtrl',
         controllerAs: 'modal',
-        size: size,
-        appendTo: parentElem
+        size: size
       });
 
       modalInstance.result.then(function(name) {
         // Execute this code if the result is "OK"
-        room.add(name);
+        room.create(name);
         console.log('Name: ' + name);
-      }, function () { return; });
+      }, function (error) {
+        //console.log(`Error: ${error}`);
+        return;
+      });
     };
   }
 
   angular
       .module('basicChat')
-      .controller('ModalCtrl', ['$uibModal', '$document', 'Room', ModalCtrl]);
+      .controller('ModalCtrl', ['$uibModal', 'Room', ModalCtrl]);
 })();
