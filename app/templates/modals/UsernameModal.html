@@ -1,0 +1,21 @@
+<div>
+  <div class="modal-header">
+    <h3 class="modal-title">Set a Username</h3>
+  </div>
+
+  <form name="setUsrName">
+    <div class="modal-body">
+      <p>This name will appear when you send messages.</p>
+        <input name="usrName" ng-class="{invalid : !setUsrName.usrName.$pristine && setUsrName.$invalid, valid : !setUsrName.usrName.$pristine && setUsrName.$valid}" type="text" ng-model="usrName" pattern="^[a-zA-Z0-9]{8,12}$" title="Username must be 8 Characters, with one letter and one number." required autofocus>
+        <p class="invalidEntryWarn" ng-show="!setUsrName.usrName.$pristine && setUsrName.$invalid"><br>
+          Must use at least one letter, and one number.<br>
+          Must contain at least 8 characters.<br>
+          Special chars are <strong>not</strong> allowed.
+        </p>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-disabled="setUsrName.$invalid" ng-click="setUsrName.$invalid || modalUN.ok(usrName)">Submit</button>
+    </div>
+  </form>
+</div>

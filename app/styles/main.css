@@ -7,6 +7,22 @@ uib-btn-checkbox:checked {
   border: 3px solid yellow;
 }
 
+.invalid {
+  background-color: rgba(185, 75, 75, .7);
+}
+
+input {
+  border-color: #ccc;
+}
+.valid {
+  background-color: rgba(67, 218, 19, 0.7);
+}
+
+.invalidEntryWarn {
+  font-size: .75em;
+  color: red;
+}
+
 .rooms {
   height: 100vh;
   width: 30%;
@@ -30,8 +46,8 @@ uib-btn-checkbox:checked {
 }
 
 .row {
-    height: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  height: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .username {
@@ -40,7 +56,7 @@ uib-btn-checkbox:checked {
 }
 
 .message {
-    width: 80%;
+  width: 80%;
 }
 
 .message p {
@@ -48,7 +64,8 @@ uib-btn-checkbox:checked {
 }
 
 .timeStamp {
-    width: 20%;
+  text-align: right;
+  width: 20%;
 }
 
 .navbar {
