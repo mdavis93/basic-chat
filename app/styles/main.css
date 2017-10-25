@@ -18,9 +18,26 @@ input {
   background-color: rgba(67, 218, 19, 0.7);
 }
 
+.oddRow {
+  background-color: rgba(165, 165, 165, 0.2);
+}
+
+.pad-lr-2 {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
 .invalidEntryWarn {
   font-size: .75em;
   color: red;
+}
+
+.input {
+  width: 70%;
+  line-height: 2em;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 .rooms {
@@ -39,10 +56,26 @@ input {
   position: fixed;
   top: 0;
   right: 0;
+  overflow-y: scroll;
+}
+
+header#roomName {
+  position:fixed;
+  top: 0;
+  width: 70%;
+  background-color: white;
 }
 
 .container {
   width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.messages .container h2 {
+  text-align: center;
 }
 
 .row {
@@ -55,8 +88,14 @@ input {
   font-weight: bold;
 }
 
-.message {
-  width: 80%;
+.table .message {
+  padding-left: 2rem;
+  width: 90%;
+}
+
+.table {
+  margin-top: 100px;
+  margin-bottom: 4rem;
 }
 
 .message p {
@@ -64,7 +103,7 @@ input {
 }
 
 .timeStamp {
-  text-align: right;
+  text-align: center;
   width: 20%;
 }
 

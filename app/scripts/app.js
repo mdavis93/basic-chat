@@ -30,10 +30,7 @@
       });
 
       modalInstance.result.then(function (usrname) {
-        console.log(`modalInstance.result fired, usrname is '${usrname}'`);
-
         $cookies.put('blocChatCurrentUser', usrname);
-        console.log(`Cookie value: ${$cookies.get('blocChatCurrentUser')}`);
       });
     }
   }

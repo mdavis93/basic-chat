@@ -3,9 +3,9 @@
     <h1>Basic Chat</h1>
     <div ng-controller="ModalCtrl as modals" id="roomAddDel">
       <a type="button" class="btn btn-primary" ng-disabled="home.Deleting" ng-click="home.Deleting || modals.open('sm')">New Room</a>
-    <!--  TODO - Complete Delete function to also delete messages associated with the deleted room.
+    <!--  TODO - Complete Delete function to also delete messages associated with the deleted room. -->
       <a type="button" class="btn btn-danger" ng-model="home.Deleting" uib-btn-checkbox id="btnDelete">Delete Room</a>
-    -->
+
     </div>
     <span ng-show="home.Deleting" id="deleteWhich">Delete which room...</span>
     <span ng-repeat="room in home.rooms">
@@ -18,8 +18,9 @@
 </section>
 <section class="messages">
   <div class="container">
-    <h2>Chatting In {{ activeRoom.$value }}</h2>
-    <hr>
+    <header id="roomName">
+      <h2>Chatting In {{ activeRoom.$value }}</h2>
+    </header>
     <table class="table">
       <tr ng-repeat="message in messages track by $index" class="row" ng-class="{oddRow: $odd}">
         <td class="message">
@@ -31,5 +32,17 @@
         </td>
       </tr>
     </table>
+  </div>
+</section>
+<section class="input">
+  <div class="message-bar">
+      <form ng-submit="home.send(home.message, activeRoom)">
+          <div class="input-group animated">
+              <input id="msgInputBox" type="text" class="form-control finderBar" ng-model="home.message" placeholder="Write your message here..." autofocus>
+              <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit">Send</button>
+              </span>
+          </div>
+      </form>
   </div>
 </section>

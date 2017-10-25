@@ -1,5 +1,5 @@
 (function() {
-  function HomeCtrl(Room, Message, $filter, $scope) {
+  function HomeCtrl(Room, Message, $document, $filter, $scope) {
 
     /**
     * @desc Boolean value denoting whether the user is deleting a room
@@ -12,7 +12,9 @@
       room = rooms[0];
 
       $scope.activeRoom = room;
-      $scope.messages = Message.getByRoomId($scope.activeRoom.$id);
+      if ($scope.activeRoom) {
+        $scope.messages = Message.getByRoomId($scope.activeRoom.$id);
+      }
     });
 
     this.toLocalTime = (date) => {
@@ -25,6 +27,8 @@
     **/
     this.rooms = rooms;
 
+    this.send = Message.send;
+
     /**
     * @func delRoom
     * @param {Object} room
@@ -32,7 +36,6 @@
     **/
     this.delRoom = function(room) {
       Room.delete(room);
-      this.toggleDelete();
     };
 
     /**
@@ -58,14 +61,25 @@
     * @param {Object} room
     * @desc Process user clicks on a room in a list of rooms
     **/
+    /**** TODO AT THIS POINT, ROOM DELETION SHOULD BE BROKEN INTO A SERVICE ****/
+    /****      PERHAPS THE ~~ROOM~~ SERVICE!                                ****/
     this.processClick = (room) => {
       if (this.Deleting) {
+        this.toggleDelete();
+
+        angular.forEach($scope.messages, function(value, key, obj) {
+          if (value.roomId === $scope.activeRoom.$id) {
+            Message.delete(value);
+          }
+        });
+
         // If we're deleting the room we are in, let's leave it first.
         if ($scope.activeRoom === room) {
           var roomIndex = rooms.indexOf(room)
-          $scope.activeRoom = roomIndex > 0 ? rooms[roomIndex - 1] : rooms.length > 0 ? rooms[rooms.length - 1] : null;
+          this.changeRoom( roomIndex > 0 ? rooms[roomIndex - 1] : rooms.length > 0 ? rooms[rooms.length - 1] : null );
         }
         this.delRoom(room);
+
       } else {
         this.changeRoom(room);
       }
@@ -74,5 +88,5 @@
 
   angular
       .module('basicChat')
-      .controller('HomeCtrl', ['Room', 'Message', '$filter', '$scope', HomeCtrl]);
+      .controller('HomeCtrl', ['Room', 'Message', '$document', '$filter', '$scope', HomeCtrl]);
 })();
